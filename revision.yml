@@ -1,0 +1,17 @@
+---
+- name: Revision
+  hosts: qaserver
+  become: yes
+  ignore_errors: True
+  tasks:
+  - name: installing packages
+    yum:
+      name: "{{item}}"
+      state: present  
+    when: ansible_distribution == "Amazon"  
+    loop: 
+       - httpd
+       - unzip
+       - git
+       - wget
+
