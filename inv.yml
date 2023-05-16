@@ -1,8 +1,11 @@
+qa ansible_host=34.232.95.171
+dev ansible_host=54.89.17.172
+
 [qaserver]
-3.238.67.198
+qa
 
 [devserver]
-54.174.27.215
+dev
 
 [qadev:children]
 qaserver
