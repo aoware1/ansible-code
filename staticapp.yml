@@ -27,6 +27,7 @@
       src: /usr/local/bin/static-resume-main/iPortfolio/
       dest: /var/www/html/
       remote_src: yes
+      follow: yes
   - name: starting apache
     service:
       name: httpd
