@@ -1,6 +1,6 @@
 ---
 - name: Static App Deployment 
-  hosts: qaserver
+  hosts: devserver
   become: yes
   ignore_errors: True
   tasks:
@@ -16,15 +16,15 @@
   - name: Getting app content
     get_url:
       url: https://github.com/utrains/static-resume/archive/refs/heads/main.zip
-      dest: /etc
+      dest: /etc/main.zip
   - name: unarchiving content
     unarchive:
-      src: https://github.com/utrains/static-resume/archive/refs/heads/main.zip
-      dest: /tmp
+      src: /etc/main.zip
+      dest: /usr/local/bin
       remote_src: yes
   - name: copy file to html
     copy:
-      src: /tmp/static-resume/archive/refs/heads/main/iPortfolio/*
+      src: /usr/local/bin/static-resume-main/iPortfolio/
       dest: /var/www/html/
       remote_src: yes
   - name: starting apache
